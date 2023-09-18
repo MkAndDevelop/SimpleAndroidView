@@ -1,6 +1,7 @@
 package com.mk.develop.simpleandroidview
 
 import android.app.Activity
+import android.view.ViewGroup
 import android.webkit.WebView
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
@@ -22,6 +23,10 @@ fun SimpleAndroidView(activity: Activity, policy: Boolean = false, url: String, 
 
     AndroidView(factory = {
         WebView(it).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
             WebConfig.webViewSettings(this)
             this.webViewClient = viewClient
             this.webChromeClient = chromeClient

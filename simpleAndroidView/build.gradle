@@ -60,7 +60,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.mk.develop'
                 artifactId = 'SimpleAndroidView'
-                version = '1.0.2'
+                version = '1.0.3'
             }
         }
     }

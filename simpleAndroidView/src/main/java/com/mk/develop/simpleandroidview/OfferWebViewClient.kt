@@ -1,11 +1,13 @@
 package com.mk.develop.simpleandroidview
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.runtime.Composable
+import androidx.core.content.ContextCompat.startActivity
 import com.mk.develop.simpleandroidview.utils.AppConst
 
 @Composable
@@ -34,6 +36,16 @@ internal fun offerWebViewClient(
                                 Intent(Intent.ACTION_SENDTO).apply {
                                     data = Uri.parse(url)
                                     view?.context?.startActivity(this)
+                                }
+                            }
+
+                            url.startsWith("fb://") -> {
+                                try {
+                                    Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                                        view?.context?.startActivity(this)
+                                    }
+                                } catch (e: ActivityNotFoundException) {
+
                                 }
                             }
 

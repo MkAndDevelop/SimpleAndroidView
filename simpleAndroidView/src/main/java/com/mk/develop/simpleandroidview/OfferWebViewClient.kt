@@ -39,16 +39,6 @@ internal fun offerWebViewClient(
                                 }
                             }
 
-                            url.startsWith("fb://") -> {
-                                try {
-                                    Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
-                                        view?.context?.startActivity(this)
-                                    }
-                                } catch (e: ActivityNotFoundException) {
-
-                                }
-                            }
-
                             url.startsWith(AppConst.TEL) -> {
                                 Intent(Intent.ACTION_DIAL).apply {
                                     data = Uri.parse(url)
